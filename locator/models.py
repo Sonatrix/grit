@@ -8,6 +8,9 @@ class Category(models.Model):
     slug = models.SlugField(max_length=128)
     description = models.TextField(blank=True)
 
+    class Meta:
+        db_table = 'category'
+
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
@@ -26,4 +29,7 @@ class Product(models.Model):
     storeUrl = models.URLField(default="")
     updated_at = models.DateTimeField(auto_now=True, null=True)
     is_featured = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'product'
 
