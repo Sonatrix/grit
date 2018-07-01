@@ -14,13 +14,13 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
-    price = models.DecimalField(default=0.00, decimal_places=2)
-    old_price = models.DecimalField(default=0.00, decimal_places=2)
+    price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
+    old_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     storeUrl = models.URLField(default="")
     images = ListCharField(
-        base_field=models.URLField(max_length=200),
-        size=6,
-        max_length=(6 * 11)  # 6 * 10 character nominals, plus commas
+        base_field=models.URLField(max_length=80),
+        size=10,
+        max_length=(80 * 11)  # 6 * 10 character nominals, plus commas
     )
 
     storeUrl = models.URLField(default="")
