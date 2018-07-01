@@ -11,6 +11,9 @@ class Category(models.Model):
     class Meta:
         db_table = 'category'
 
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
@@ -21,9 +24,9 @@ class Product(models.Model):
     old_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     storeUrl = models.URLField(default="")
     images = ListCharField(
-        base_field=models.URLField(max_length=80),
+        base_field=models.URLField(max_length=255),
         size=10,
-        max_length=(80 * 11)  # 6 * 10 character nominals, plus commas
+        max_length=(255 * 11)  # 6 * 10 character nominals, plus commas
     )
 
     storeUrl = models.URLField(default="")
@@ -32,4 +35,7 @@ class Product(models.Model):
 
     class Meta:
         db_table = 'product'
+
+    def __str__(self):
+        return self.name
 
