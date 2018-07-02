@@ -1,16 +1,15 @@
 {% extends 'common/base.html' %} {% block app_body %}
 <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-        	{% for category in categories %}
-          		<a class="p-2 text-muted" href="#">{{category.name}}</a>
-        	{% endfor %}
-        </nav>
-      </div>
-<div class="row">
-    <div class="col-md-12">
+    <nav class="nav d-flex justify-content-between">
+        {% for category in categories %}
+        <a class="p-2 text-muted" href="#">{{category.name}}</a> {% endfor %}
+    </nav>
+</div>
+<div class="row jumbotron">
+
         {% for product in products %}
-        <div class='col-md-3'>
-            <div class="card" style="width: 18rem;">
+        <div class='col-sm-3'>
+            <div class="card">
                 <img class="card-img-top img-responsive" src="{{product.images.0}}" alt="Card image cap" style="max-width:250px;height:250px;">
                 <div class="card-body">
                     <h5 class="card-title">{{product.name}}</h5>
@@ -19,6 +18,5 @@
             </div>
         </div>
         {% endfor %}
-    </div>
 </div>
 {% endblock %}
