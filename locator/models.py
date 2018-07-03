@@ -18,6 +18,7 @@ class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
     description = models.TextField()
+    meta_description = models.TextField(default=" ")
     category = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
@@ -28,8 +29,6 @@ class Product(models.Model):
         size=10,
         max_length=(255 * 11)  # 6 * 10 character nominals, plus commas
     )
-
-    storeUrl = models.URLField(default="")
     updated_at = models.DateTimeField(auto_now=True, null=True)
     is_featured = models.BooleanField(default=False)
 
@@ -38,4 +37,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.meta_description = self.description[:30] + "..."
+        super(Product, self).save(*args, **kwargs)
+
+
+
 
