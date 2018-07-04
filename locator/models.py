@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django_mysql.models import ListCharField
+from django.utils.text import slugify
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -14,6 +15,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
+
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
@@ -24,6 +29,7 @@ class Product(models.Model):
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     old_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     storeUrl = models.URLField(default="")
+    slug = models.SlugField(default="", max_length=128)
     images = ListCharField(
         base_field=models.URLField(max_length=255),
         size=10,
@@ -40,6 +46,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         self.meta_description = self.description[:30] + "..."
+        self.slug = f'{slugify(self.name)}-{self.id[1:6]}'
         super(Product, self).save(*args, **kwargs)
 
 
