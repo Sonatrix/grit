@@ -8,14 +8,11 @@
 <div class="row jumbotron">
     <div id="wrap">
         <div id="columns" class="columns_4">
-            {% for product in products %}
             <figure>
                 <img src="{{product.images.0}}">
                 <figcaption>{{product.name}}</figcaption>
                 <span class="price">₹ {{product.price}}</span>
-                <a class="button" href='{% url "locator:product_detail" product.slug %}'>View Details</a>
             </figure>
-            {% endfor %}
         </div>
     </div>
 </div>

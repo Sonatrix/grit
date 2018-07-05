@@ -1,6 +1,9 @@
 from django.urls import path
-from . import views
+from locator.views import home
+
+app_name = 'locator'
 
 urlpatterns = [
-    path('', views.index, name = 'home'),
+    path('', home.index, name = 'home'),
+    path('products/<slug:slug>/', home.product_details, name='product_detail'),
 ]
