@@ -19,7 +19,9 @@
 
 <body>
     <div class="container-fluid">
-        {% include './header.html' %} {% block app_body %}{% endblock %}
+        {% include './header.html' %} 
+        {% include './category_nav.html' %}
+        {% block app_body %}{% endblock %}
     </div>
 </body>
 

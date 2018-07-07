@@ -1,0 +1,6 @@
+<figure>
+    <img src="{{product.images.0}}">
+    <figcaption>{{product.name}}</figcaption>
+    <span class="price">₹ {{product.price}}</span>
+    <a class="button" href='{% url "locator:product_detail" product.slug %}'>View Details</a>
+</figure>

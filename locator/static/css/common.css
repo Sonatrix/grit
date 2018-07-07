@@ -146,6 +146,7 @@ a.button{
   border-bottom:3px solid #ff6536;
   box-shadow:1px 1px 3px rgba(0,0,0,0.3);
 }
+
 a.button:hover{
   background:#ff6536;
   border-bottom:3px solid salmon;
@@ -162,4 +163,18 @@ a.button:hover{
 }
 @media screen and (max-width: 500px) {
   #columns figure { width: 100%;}
+}
+
+a.buy_button{
+  padding:10px 20px 10px 20px;
+  background:salmon;
+  margin:10px;
+  text-align:center;
+  color:#fff;
+  transition:all 1s linear;
+  text-decoration:none;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+  border-radius:3px;
+  border-bottom:3px solid #ff6536;
+  box-shadow:1px 1px 3px rgba(0,0,0,0.3);
 }

@@ -1,20 +1,17 @@
 {% extends 'common/base.html' %} {% block app_body %}
-<div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-        {% for category in categories %}
-       <a class="p-2 text-muted" href='{% url "locator:category_products" category.slug %}'>{{category.name}}</a> {% endfor %}
-    </nav>
-</div>
-<div class="row jumbotron">
-    <div id="wrap">
-        <div id="columns" class="columns_4">
-            <figure>
-                <img src="{{product.images.0}}">
-                <figcaption>{{product.name}}</figcaption>
-                <span class="price">₹ {{product.price}}</span>
-                <a class="button" href='{{product.storeUrl}}'>Buy Now</a>
-            </figure>
+<div class="row pd-5">
+    <div class="col-sm-6">
+        <img src="{{product.images.0}}">
+    </div>
+    <div class="col-sm-6">
+        <h2>{{product.name}}</h2>
+        <span class="price">₹ {{product.price}} <del class="ml-3">₹ {{product.old_price}}</span>
+        <div class="mt-5">
+            <a class="buy_button" href='{{product.storeUrl}}'>Buy Now</a>
         </div>
+        <hr>
+        <h3>Description</h3>
+        <div class="item_description mt-5">{{product.description}}</div>
     </div>
 </div>
 {% endblock %}
