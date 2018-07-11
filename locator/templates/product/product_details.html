@@ -13,5 +13,15 @@
         <h3>Description</h3>
         <div class="item_description mt-5">{{product.description}}</div>
     </div>
+
+    <!-- Featured products -->
+    <div class="col-md-12 mt-5 pd-5">
+        <h3 class="ml-5">Similar Products</h3>
+            <div id="columns" class="columns_4">
+                {% for product in latest_products %}
+                {% include 'product/product_item.html' %}
+                {% endfor %}
+            </div>
+    </div>
 </div>
 {% endblock %}
