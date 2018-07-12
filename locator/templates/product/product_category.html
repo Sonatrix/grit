@@ -1,11 +1,22 @@
 {% extends 'common/base.html' %} {% block app_body %}
 <div class="row jumbotron">
-    <div id="wrap">
-        <div id="columns" class="columns_4">
-            {% for product in products %}
-             {% include 'product/product_item.html' %}
-            {% endfor %}
-        </div>
+    <div id="columns" class="columns_4 infinite-container">
+        {% for product in products %} {% include 'product/product_item.html' %} {% endfor %}
+    </div>
+    {% if products.has_next %}
+    <a class="infinite-more-link pd-5" href="?page={{ products.next_page_number }}">More</a> {% endif %}
+    <div class="loader pd-5" style="display: none;">
     </div>
 </div>
+<script>
+var infinite = new Waypoint.Infinite({
+    element: $('.infinite-container')[0],
+    onBeforePageLoad: function() {
+        $('.loader').show();
+    },
+    onAfterPageLoad: function($items) {
+        $('.loader').hide();
+    }
+});
+</script>
 {% endblock %}

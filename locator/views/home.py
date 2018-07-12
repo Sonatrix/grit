@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from locator.models import Product, Category
 
 def index(request):
@@ -16,4 +17,13 @@ def product_category(request, slug):
     category = Category.objects.select_related().get(slug=slug)
     products = get_list_or_404(Product, category_id=category.id)
     categories = Category.objects.all()
-    return render(request, 'product/product_category.html', {"products": products, "categories": categories, "name": slug})
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products, 10)
+    try:
+        numbers = paginator.page(page)
+    except PageNotAnInteger:
+        numbers = paginator.page(1)
+    except EmptyPage:
+        numbers = paginator.page(paginator.num_pages)
+    return render(request, 'product/product_category.html', {"products": numbers, "categories": categories, "name": slug})
