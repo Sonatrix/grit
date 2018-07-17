@@ -37,7 +37,9 @@ class Product(models.Model):
     )
     updated_at = models.DateTimeField(auto_now=True, null=True)
     is_featured = models.BooleanField(default=False)
-
+    sender = models.CharField(default="",blank=True, max_length=128)
+    brand = models.CharField(default="",blank=True, max_length=128)
+    
     class Meta:
         db_table = 'product'
 
