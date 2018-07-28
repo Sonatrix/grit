@@ -9,20 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{% block app_title %}Shopptar{% endblock %}</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/infinite.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/common.css' %}"> {% block app_head %}{% endblock %}
 </head>
 
 <body>
-        {% include './header.html' %}  <div class="container-fluid category-nav"> {% include './category_nav.html' %}</div>
-        <main role="main"> {% block app_body %}{% endblock %}</main>
-        {% include './footer.html' %}
+    {% include './header.html' %}
+    <div class="container-fluid category-nav"> {% include './category_nav.html' %}</div>
+    <main role="main"> {% block app_body %}{% endblock %}</main>
+    {% include './footer.html' %}
     </div>
 </body>
 
