@@ -1,23 +1,25 @@
 {% extends 'locator/common/base.html' %} {% block app_body %}
-<div class="row pd-5">
-    <div class="col-sm-6" style="text-align:center;">
-        <img src="{{product.images.0}}">
-    </div>
-    <div class="col-sm-6">
-        <h2>{{product.name}}</h2>
-        <span class="price">₹ {{product.price}} <del class="ml-3" style="color: grey;">₹ {{product.old_price}}</span>
-        <div class="mt-5">
-            <a class="buy_button" href='{{product.storeUrl}}'>Buy Now</a>
+<div class="fluid-container mt-5 ml-2 mr-2">
+    <div class="row pd-5">
+        <div class="col-sm-6" style="text-align:center;">
+            <img src="{{product.images.0}}">
         </div>
-        <hr>
-        <h3>Description</h3>
-        <div class="item_description mt-5">{{product.description}}</div>
-    </div>
-    <!-- Featured products -->
-    <div class="col-md-12 mt-5 pd-5">
-        <h3 class="ml-5">Similar Products</h3>
-        <div id="columns" class="columns_4">
-            {% for product in latest_products %} {% include 'locator/product/product_item.html' %} {% endfor %}
+        <div class="col-sm-6">
+            <h2>{{product.name}}</h2>
+            <span class="price">₹ {{product.price}} <del class="ml-3" style="color: grey;">₹ {{product.old_price}}</span>
+            <div class="mt-5">
+                <a class="buy_button" href='{{product.storeUrl}}'>Buy Now</a>
+            </div>
+            <hr>
+            <h3>Description</h3>
+            <div class="item_description mt-5">{{product.description}}</div>
+        </div>
+        <!-- Featured products -->
+        <div class="col-md-12 mt-5 pd-5">
+            <h3 class="ml-5">Similar Products</h3>
+            <div id="columns" class="columns_4">
+                {% for product in latest_products %} {% include 'locator/product/product_item.html' %} {% endfor %}
+            </div>
         </div>
     </div>
 </div>

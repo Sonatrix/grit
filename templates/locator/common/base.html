@@ -20,8 +20,8 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        {% include './header.html' %} {% include './category_nav.html' %} {% block app_body %}{% endblock %}
+        {% include './header.html' %}  <div class="container-fluid category-nav"> {% include './category_nav.html' %}</div>
+        <main role="main"> {% block app_body %}{% endblock %}</main>
         {% include './footer.html' %}
     </div>
 </body>
