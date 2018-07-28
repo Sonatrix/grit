@@ -38,12 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_mysql',
-    'locator',
-    'django_comments',
-    'mptt',
-    'tagging',
-    'zinnia'
+    'locator'
 ]
 
 MIDDLEWARE = [
@@ -70,8 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.i18n',
-                'zinnia.context_processors.version'  # Optional
+                'django.template.context_processors.i18n'
             ],
         },
     },
@@ -85,14 +79,11 @@ WSGI_APPLICATION = 'grit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'admin',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'postgres',
         'NAME': 'locator',
         'PASSWORD': '12345',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
-            'charset': 'utf8mb4',
-        },
+        'HOST': 'localhost'
     }
 }
 
@@ -136,3 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 SITE_ID = 1
+
+SEARCH_SETTINGS = {
+   'config': 'english_unaccent',
+}

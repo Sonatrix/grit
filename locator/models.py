@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-from django_mysql.models import ListCharField
+from django.contrib.postgres.fields import ArrayField
 from django.utils.text import slugify
 
 class Category(models.Model):
@@ -30,8 +30,8 @@ class Product(models.Model):
     old_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     storeUrl = models.URLField(default="")
     slug = models.SlugField(default="",blank=True, unique=True, max_length=128)
-    images = ListCharField(
-        base_field=models.URLField(max_length=255),
+    images = ArrayField(
+        models.URLField(max_length=255),
         size=10,
         max_length=(255 * 11)  # 6 * 10 character nominals, plus commas
     )
