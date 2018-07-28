@@ -36,6 +36,18 @@
                     </figure>
                 </a>{% endfor %}</div>
         </div>
+        <div class="col-sm-12 mt-5">
+            <h3 class="text-left ml-2">On Sale</h3>
+            <div id="columns" class="columns_4 mt-3">
+                {% for product in products %}
+                <a href='{% url "locator:product_detail" product.slug %}' title="{{product.name}}">
+                    <figure>
+                        <img src="{{product.images.0}}">
+                        <figcaption>{{product.name}}</figcaption>
+                        <span class="price">₹ {{product.price}}</span>
+                    </figure>
+                </a>{% endfor %}</div>
+        </div>
     </div>
 </div>
 <!-- /.container -->
