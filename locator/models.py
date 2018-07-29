@@ -28,7 +28,7 @@ class Product(models.Model):
         Category, related_name='products', on_delete=models.CASCADE)
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     old_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
-    storeUrl = models.URLField(default="")
+    store_url = models.URLField(default="")
     slug = models.SlugField(default="",blank=True, unique=True, max_length=128)
     images = ArrayField(
         models.URLField(max_length=255),
@@ -36,7 +36,8 @@ class Product(models.Model):
         max_length=(255 * 11)  # 6 * 10 character nominals, plus commas
     )
     updated_at = models.DateTimeField(auto_now=True, null=True)
-    is_featured = models.BooleanField(default=False)
+    is_featured = models.NullBooleanField(default=False, null=True, blank=True)
+    discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, null=True)
     sender = models.CharField(default="",blank=True, max_length=128)
     brand = models.CharField(default="",blank=True, max_length=128)
     
