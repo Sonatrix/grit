@@ -2,7 +2,12 @@
 <div class="fluid-container mt-1 ml-2 mr-2">
 <div class="row jumbotron">
     <div id="columns" class="columns_4 infinite-container">
-        {% for product in products %} {% include 'locator/product/product_item.html' %} {% endfor %}
+        {% if products %}
+            {% for product in products %} {% include 'locator/product/product_item.html' %} {% endfor %}
+            }
+        {% else %}
+        <h3>No Products Found</h3>
+        {% endif %}
     </div>
     {% if products.has_next %}
     <a class="infinite-more-link pd-5" href="?page={{ products.next_page_number }}">More</a> {% endif %}
