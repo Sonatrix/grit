@@ -4,7 +4,6 @@
     <div id="columns" class="columns_4 infinite-container">
         {% if products %}
             {% for product in products %} {% include 'locator/product/product_item.html' %} {% endfor %}
-            }
         {% else %}
         <h3>No Products Found</h3>
         {% endif %}

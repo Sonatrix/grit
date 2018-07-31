@@ -22,3 +22,6 @@ urlpatterns = [
 	# path('comments/', include('django_comments.urls')),
     path('', include("locator.urls"))
 ]
+
+handler404 = 'locator.views.error.handler404'
+handler500 = 'locator.views.error.handler500'
