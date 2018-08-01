@@ -1,7 +1,7 @@
 <div class="col-sm-12 mt-2">
     <a href='{% url "locator:product_detail" product.slug %}' title="{{product.name}}">
         <div class="card bg-light text-black">
-            <img class="card-img" src="{{product.images.0}}" alt="{{product.name}}" title="{{product.name}}">
+            <img class="card-img" src="{{product.images.0}}" alt="{{product.name}}" title="{{product.name}}" alt="{{product.name}}">
             <div class="card-img-overlay" style="text-align:right;">
                 <p class="card-text"><span class="banner-price">₹ {{product.price}}</span></p>
             </div>
