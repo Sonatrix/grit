@@ -28,4 +28,5 @@ class SearchView(ListView):
 
       context['products'] = qs.order_by('updated_at')
       context["categories"] =  categories
+      context["path"] = search_string
       return context
