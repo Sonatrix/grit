@@ -18,8 +18,6 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('news/', include('zinnia.urls')),
-	# path('comments/', include('django_comments.urls')),
     path('', include("locator.urls"))
 ]
 

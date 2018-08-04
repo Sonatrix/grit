@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from django.utils.text import slugify
+from django.urls import reverse
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -51,6 +52,9 @@ class Product(models.Model):
         self.meta_description = self.description[:30] + "..."
         self.slug = f'{slugify(self.name)}-{self.id[1:6]}'
         super(Product, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('locator:product_detail', kwargs={'slug': self.category.slug, 'pslug': self.slug})
 
 
 
