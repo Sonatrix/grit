@@ -10,6 +10,9 @@ class Category(models.Model):
     slug = models.SlugField(max_length=128)
     description = models.TextField(blank=True)
 
+    # add tag field for adding keywords related to category
+    tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
+
     class Meta:
         db_table = 'category'
 
@@ -18,6 +21,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+
         super(Category, self).save(*args, **kwargs)
 
 class Product(models.Model):
@@ -37,11 +41,15 @@ class Product(models.Model):
         max_length=(255 * 11)  # 6 * 10 character nominals, plus commas
     )
     updated_at = models.DateTimeField(auto_now=True, null=True)
+    created_at = models.DateTimeField(auto_now=True, null=True)
     is_featured = models.NullBooleanField(default=False, null=True, blank=True)
     discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, null=True)
     sender = models.CharField(default="",blank=True, max_length=128)
     brand = models.CharField(default="",blank=True, max_length=128)
     
+    # add tag field for adding keywords related to product
+    tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
+
     class Meta:
         db_table = 'product'
 
@@ -51,6 +59,7 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.meta_description = self.description[:30] + "..."
         self.slug = f'{slugify(self.name)}-{self.id[1:6]}'
+
         super(Product, self).save(*args, **kwargs)
 
     def get_absolute_url(self):

@@ -1,6 +1,6 @@
 <figure class="infinite-item">
-    <img src="{{product.images.0}}">
-    <figcaption>{{product.name}}</figcaption>
+    <img src="{{product.images.0}}" alt="{{product.name}}" title="{{product.name}}">
+    <figcaption name="name">{{product.name}}</figcaption>
     <span class="price">₹ {{product.price}}</span>
     <a class="button" href='{% url "locator:product_detail" product.category.slug product.slug %}' alt="{{product.name}}">View Details</a>
 </figure>
