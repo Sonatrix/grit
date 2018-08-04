@@ -215,7 +215,6 @@ a.buy_button {
 .blog-footer {
   padding: 2.5rem 0;
   color: #999;
-  text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
 }
@@ -288,3 +287,24 @@ a.buy_button {
 .search-button {
     cursor: pointer;
 }
+
+
+.footers a {color:#696969;}
+.footers p {color:#696969;}
+.footers ul {line-height:30px;}
+#social-fb:hover {
+     color: #3B5998;
+     transition:all .001s;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+     transition:all .001s;
+ }
+ #social-gp:hover {
+     color: #d34836;
+     transition:all .001s;
+ }
+ #social-em:hover {
+     color: #f39c12;
+     transition:all .001s;
+ }
