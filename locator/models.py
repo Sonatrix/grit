@@ -58,7 +58,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         self.meta_description = self.description[:30] + "..."
-        self.slug = f'{slugify(self.name)}-{self.id[1:6]}'
+        self.slug = f'{slugify(self.name)}-{self.id.__hash__()%100000}'
 
         super(Product, self).save(*args, **kwargs)
 
