@@ -31,7 +31,7 @@ class Brand(models.Model):
     is_company = models.NullBooleanField(default=True, null=True, blank=True)
     slug = models.SlugField(max_length=128)
     description = models.TextField(blank=True)
-
+    image = models.URLField(max_length=255, blank=True, null=True)
     # add tag field for adding keywords related to category
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
 
