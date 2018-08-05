@@ -24,6 +24,29 @@ class Category(models.Model):
 
         super(Category, self).save(*args, **kwargs)
 
+
+class Brand(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=128)
+    is_company = models.NullBooleanField(default=True, null=True, blank=True)
+    slug = models.SlugField(max_length=128)
+    description = models.TextField(blank=True)
+
+    # add tag field for adding keywords related to category
+    tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
+
+    class Meta:
+        db_table = 'brand'
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+
+        super(Brand, self).save(*args, **kwargs)
+
+
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
@@ -45,7 +68,8 @@ class Product(models.Model):
     is_featured = models.NullBooleanField(default=False, null=True, blank=True)
     discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, null=True)
     sender = models.CharField(default="",blank=True, max_length=128)
-    brand = models.CharField(default="",blank=True, max_length=128)
+    brand = models.ForeignKey(
+        Brand, related_name='brand', on_delete=models.CASCADE)
     
     # add tag field for adding keywords related to product
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
@@ -64,7 +88,3 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('locator:product_detail', kwargs={'slug': self.category.slug, 'pslug': self.slug})
-
-
-
-
