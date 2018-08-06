@@ -18,7 +18,8 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("locator.urls"))
+    path('blog/', include("blog.urls", namespace='blog')),
+    path('', include("locator.urls", namespace='locator'))
 ]
 
 handler404 = 'locator.views.error.handler404'
