@@ -17,6 +17,5 @@ urlpatterns = [
     path('<slug:slug>/', include([
         path('', home.product_category, name='category_products'),
         path('<slug:pslug>/', home.product_details, name='product_detail'),
-    ])),
-    
+    ])),   
 ]
