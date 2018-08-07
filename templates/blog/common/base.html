@@ -1,0 +1,35 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}Shopptar{% endblock %}</title>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/infinite.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}"> {% block app_head %}{% endblock %}
+</head>
+
+<body>
+    {% include './header.html' %}
+    <div class="container-fluid category-nav"> {% include './category_nav.html' %}</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">{% block app_body %}{% endblock %}</div>
+            <div class="col-md-4">{% block side_body %}{% endblock %}</div>
+        </div>
+    </div>
+    </div>
+    {% include './footer.html' %}
+</body>
+
+</html>

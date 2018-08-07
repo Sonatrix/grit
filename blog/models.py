@@ -24,13 +24,15 @@ class Post(models.Model):
 	published = PublishedManager()
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
+	category = models.ForeignKey('locator.Category', on_delete=models.CASCADE)
+
 	class Meta:
 		ordering = ('-publish',)
 		db_table = 'post'
 
 	def __str__(self):
 		return self.title
-
+    
 	def get_absolute_url(self):
 		return reverse('blog:post_detail', args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
 
