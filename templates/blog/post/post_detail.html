@@ -3,4 +3,4 @@
 <p class="date">
     Published {{ post.publish }} by {{ post.author }}
 </p>
-{{ post.body|linebreaks }} {% endblock %}
+<div>{{ post.body|striptags }}</div> {% endblock %}

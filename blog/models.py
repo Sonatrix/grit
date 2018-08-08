@@ -23,7 +23,7 @@ class Post(models.Model):
 	objects = models.Manager()
 	published = PublishedManager()
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-
+	# need to add external url and images link
 	category = models.ForeignKey('locator.Category', on_delete=models.CASCADE)
 
 	class Meta:
