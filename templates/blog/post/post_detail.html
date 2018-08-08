@@ -3,4 +3,8 @@
 <p class="date">
     Published {{ post.publish }} by {{ post.author }}
 </p>
-<div>{{ post.body|striptags }}</div> {% endblock %}
+<div>
+{% autoescape off %}
+    {{ post.body }}
+{% endautoescape %}</div>
+{% endblock %}
