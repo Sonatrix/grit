@@ -11,6 +11,9 @@ mysqlclient = "*"
 "psycopg2" = "*"
 "psycopg2-binary" = "*"
 feedparser = "*"
+"beautifulsoup4" = "*"
+requests = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.5"

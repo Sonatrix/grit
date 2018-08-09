@@ -19,11 +19,12 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name='blog_posts')
 
     body = models.TextField()
+    short_description = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     tags = ArrayField(models.CharField(max_length=250), blank=True, null=True)
-    external_url = models.URLField(default="")
+    external_url = models.URLField(default="", blank=True, null=True)
 
     objects = models.Manager()
     published = PublishedManager()
@@ -34,8 +35,8 @@ class Post(models.Model):
     category = models.ForeignKey('locator.Category', on_delete=models.CASCADE)
 
     images = ArrayField(
-        models.URLField(max_length=255),
-        size=10,
+        models.URLField(max_length=255, blank=True, null=True),
+        size=10, blank=True, null=True,
         max_length=(255 * 11)  # 6 * 10 character nominals, plus commas
     )
     sender = models.CharField(max_length=255, default="shoppstar")
