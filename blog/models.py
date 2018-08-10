@@ -28,7 +28,7 @@ class Post(models.Model):
 
     objects = models.Manager()
     published = PublishedManager()
-
+    is_featured = models.NullBooleanField(default=True, null=True, blank=True)
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='draft')
 
