@@ -8,13 +8,13 @@
                         <img src="{% static 'images/shoppstar.png' %}" alt="Logo" style="width:120px;">
                     </div>
                     <!-- <div class="footers-info mt-3">
-    		        <p>Online store for fashional clothes and accessories.</p>
-    		    </div> -->
+                    <p>Online store for fashional clothes and accessories.</p>
+                </div> -->
                     <div class="social-icons">
                         <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 footers-two">
+                <div class="col-xs-12 col-sm-6 col-md-4 footers-two">
                     <h5>Category</h5>
                     <ul class="list-unstyled">
                         {% for category in categories %}
@@ -22,12 +22,12 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <!-- <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
-    		    <h5>Services </h5>
-    		    <ul class="list-unstyled">
-    			 <li><a href="">Advertise with us</a></li>
-    			</ul>
-    		</div> -->
+                <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
+                    <h5>Fashion</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                    </ul>
+                </div>
                 <div class="col-xs-12 col-sm-6 col-md-2 footers-five">
                     <h5>Company </h5>
                     <ul class="list-unstyled">
