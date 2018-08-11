@@ -308,3 +308,7 @@ a.buy_button {
      color: #f39c12;
      transition:all .001s;
  }
+
+ img {
+  max-width: 100%;
+ }
