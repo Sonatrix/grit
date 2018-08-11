@@ -312,3 +312,8 @@ a.buy_button {
  img {
   max-width: 100%;
  }
+
+ .carousel-inner img {
+  height: 300px;
+  max-height: 320px;
+ }

@@ -1,4 +1,4 @@
-{% extends 'blog/common/base.html' %} {% block title %}My Blog{% endblock %} {% block app_body %}
+{% extends 'blog/common/base.html' %} {% load post_extras %} {% block title %}My Blog{% endblock %} {% block app_body %}
 {% for post in posts %}
 <h2>
 	<a href="{{ post.get_absolute_url }}">
@@ -10,6 +10,12 @@
 </p>
 <div>
 {% autoescape off %}
-    {{ post.body|truncatewords:30|linebreaks }}
+    {{ post.short_description|truncatewords:30|linebreaks }}
 {% endautoescape %}</div>
  {% endfor %} {% include "./pagination.html" with page=page_obj %} {% endblock %}
+
+ {% block side_body %}
+  {% show_latest_posts 5 %}
+  <hr>
+  {% show_featured_posts 5 %}
+ {% endblock %}

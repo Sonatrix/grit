@@ -1,0 +1,13 @@
+<div class="post-block">
+	<h3>Featured Posts</h3>
+<ul>
+	{% if latest_posts %}
+	{% for post in latest_posts %}
+	<li>
+		<a href="{{ post.get_absolute_url }}" alt="{{post.title}}" ref="canonical">{{post.title}}</a></li>
+	{% endfor %}
+	{% else %}
+	<p>There are no featured posts present.</p>
+	{% endif %}
+</ul>
+</div>
