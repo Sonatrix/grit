@@ -1,8 +1,8 @@
 <div class="post-block">
 	<h3>Featured Posts</h3>
 <ul>
-	{% if latest_posts %}
-	{% for post in latest_posts %}
+	{% if featured_posts %}
+	{% for post in featured_posts %}
 	<li>
 		<a href="{{ post.get_absolute_url }}" alt="{{post.title}}" ref="canonical">{{post.title}}</a></li>
 	{% endfor %}
