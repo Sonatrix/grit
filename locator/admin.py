@@ -15,12 +15,12 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('name', 'brand', 'price','sender', 'category','created_at', 'meta_description', 'store_url')
 
-	list_filter = ('brand', 'created_at', 'is_featured', 'category', 'sender',)
-	search_fields = ('brand', 'description', 'tags', 'category',)
+	list_filter = ('brand__name', 'created_at', 'is_featured', 'category__name', 'sender',)
+	search_fields = ('brand__name', 'description', 'tags', 'category__name',)
 	prepopulated_fields = {'slug': ('name','brand',)}
 	raw_id_fields = ('category','brand',)
 	date_hierarchy = 'created_at'
-	ordering = ('price', 'brand', 'is_featured')
+	ordering = ('price', 'brand__name', 'is_featured')
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
