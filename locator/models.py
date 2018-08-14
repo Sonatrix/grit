@@ -5,6 +5,12 @@ from django.utils.text import slugify
 from django.urls import reverse
 
 
+class CategoryManager(models.Manager):
+
+    def get_queryset(self):
+        return super().get_queryset().filter(disabled=False)
+
+
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128)
@@ -17,7 +23,8 @@ class Category(models.Model):
 
     # add tag field for adding keywords related to category
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
-    
+    objects = models.Manager()
+    published = CategoryManager()
     disabled = models.BooleanField(default=False, blank=True)
 
     class Meta:
@@ -90,7 +97,7 @@ class Product(models.Model):
 
     # add tag field for adding keywords related to product
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
-    
+
     class Meta:
         db_table = 'product'
 
