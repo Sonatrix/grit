@@ -17,6 +17,8 @@ class Category(models.Model):
 
     # add tag field for adding keywords related to category
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
+    
+    disabled = models.BooleanField(default=False, blank=True)
 
     class Meta:
         db_table = 'category'
@@ -88,7 +90,7 @@ class Product(models.Model):
 
     # add tag field for adding keywords related to product
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
-
+    
     class Meta:
         db_table = 'product'
 
