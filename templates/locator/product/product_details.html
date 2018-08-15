@@ -12,7 +12,8 @@
             </div>
             <hr>
             <h3>Description</h3>
-            <div class="item_description mt-5">{{product.description}}</div>
+            <div class="item_description mt-3">
+                {% autoescape off %} {{product.description}} {% endautoescape %}</div>
         </div>
         <!-- Featured products -->
         <div class="col-md-12 mt-5 pd-5">
