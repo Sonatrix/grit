@@ -1,4 +1,4 @@
-{% extends 'locator/common/base.html' %} {% block app_body %}
+{% extends 'locator/common/base.html' %} {% load humanize %} {% block app_body %}
 <div class="fluid-container mt-1 ml-2 mr-2 pt-5">
     <div class="row pd-5">
         <div class="col-sm-6" style="text-align:center;max-height:400px;">
@@ -6,7 +6,7 @@
         </div>
         <div class="col-sm-6">
             <h2>{{product.name}}</h2>
-            <span class="price">₹ {{product.price}} <del class="ml-3" style="color: grey;">₹ {{product.old_price}}</span>
+            <span class="price">₹ {{product.price|intcomma}} <del class="ml-3" style="color: grey;">₹ {{product.old_price|intcomma}}</span>
             <div class="mt-5">
                 <a class="buy_button" href='{{product.store_url}}' rel="nofollow">Buy Now</a>
             </div>
