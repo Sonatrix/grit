@@ -1,16 +1,7 @@
-{% extends 'locator/common/base.html' %} {% load static from staticfiles %} {% block app_body %} {% include './components/products_carousel.html' %}
+{% extends 'locator/common/base.html' %} {% load category_tag %} {% load static from staticfiles %} {% block app_body %} {% include './components/products_carousel.html' %}
 <div class="fluid-container mt-5 ml-2 mr-2">
     <div class="row mb-2">
-        <div class="col-sm-12">
-            <h3 class="text-left ml-2">Top Collections</h3>
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <img class="card-img-right flex-auto d-none d-md-block img-thumbnail" data-src="https://fashionunited.de/images/landing-pages/esprit/esp_fashionunited_970x647_02.jpg" src="http://via.placeholder.com/250x150" alt="Card image cap">
-                <img class="card-img-right flex-auto d-none d-md-block img-thumbnail" data-src="https://fashionunited.de/images/landing-pages/esprit/esp_fashionunited_970x647_02.jpg" src="http://via.placeholder.com/250x150" alt="Card image cap">
-                <img class="card-img-right flex-auto d-none d-md-block img-thumbnail" data-src="https://fashionunited.de/images/landing-pages/esprit/esp_fashionunited_970x647_02.jpg" src="http://via.placeholder.com/250x150" alt="Card image cap">
-                <img class="card-img-right flex-auto d-none d-md-block img-thumbnail" data-src="https://fashionunited.de/images/landing-pages/esprit/esp_fashionunited_970x647_02.jpg" src="http://via.placeholder.com/250x150" alt="Card image cap">
-                <img class="card-img-right flex-auto d-none d-md-block img-thumbnail" data-src="https://fashionunited.de/images/landing-pages/esprit/esp_fashionunited_970x647_02.jpg" src="http://via.placeholder.com/250x150" alt="Card image cap">
-            </div>
-        </div>
+        {% show_brands %}
         <div class="col-sm-12 mt-5">
             <h3 class="text-left ml-2">Top Selling</h3>
             <div id="columns" class="columns_4 mt-3">

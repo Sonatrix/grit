@@ -20,7 +20,7 @@ class SearchView(ListView):
           )
           qs = qs.annotate(
               document=vector, rank=SearchRank(vector, query)
-          ).filter(document=query).order_by('-rank').values()
+          ).filter(document=query).order_by('-rank').prefetch_related().values()
       except KeyError:
           return Product.objects.none()
 
