@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load category_tag %}
 <footer class="blog-footer">
     <section class="footers bg-light">
         <div class="container pt-5">
@@ -16,11 +17,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 footers-two">
                     <h5>Category</h5>
-                    <ul class="list-unstyled">
-                        {% for category in categories %}
-                        <li><a href="{% url 'locator:category_products' category.slug %}">{{category.name}}</a></li>
-                        {% endfor %}
-                    </ul>
+                    {% list_categories %}
                 </div>
                <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
                     <h5>Fashion</h5>

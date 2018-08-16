@@ -13,3 +13,8 @@ def show_categories():
 def show_brands():
     brands = Brand.objects.all().exclude(image=None)[:5]
     return {"brands": brands}
+
+@register.inclusion_tag("locator/common/category_footer.html")
+def list_categories():
+    categories = Category.published.all().filter(parent=None)
+    return {"categories": categories}

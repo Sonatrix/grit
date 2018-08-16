@@ -1,0 +1,4 @@
+<ul class="list-unstyled">
+	 {% for category in categories %}
+        <li><a class="text-muted" href='{% url "locator:category_products" category.slug %}'>{{category.name}}</a> </li> {% endfor %}
+</ul>

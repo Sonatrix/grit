@@ -13,8 +13,6 @@ class PostListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.published.all()
-        categories = Category.objects.all()
-        context['categories'] = categories
         return context
 
 
@@ -25,5 +23,4 @@ def post_detail(request, year, month, day, post):
                              publish__month=month,
                              publish__day=day
                              )
-    categories = Category.objects.all()
-    return render(request, 'blog/post/post_detail.html', {'post': post, 'categories': categories})
+    return render(request, 'blog/post/post_detail.html', {'post': post})
