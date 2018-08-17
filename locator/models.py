@@ -26,7 +26,8 @@ class Category(models.Model):
     objects = models.Manager()
     published = CategoryManager()
     disabled = models.BooleanField(default=False, blank=True)
-
+    image = models.URLField(max_length=255, blank=True, null=True)
+    
     class Meta:
         db_table = 'category'
 
