@@ -5,8 +5,8 @@
             <img class="img-responsive" src="{{product.images.0}}" alt="{{product.name}}" style="max-width: 89%;max-height: 350px;">
         </div>
         <div class="col-sm-6">
-            <h2>{{product.name}}</h2>
-            <span class="price">₹ {{product.price|intcomma}} <del class="ml-3" style="color: grey;">₹ {{product.old_price|intcomma}}</span>
+            <h1 itemprop="name">{{product.name}}</h1>
+            <span class="price" itemprop="price">₹ {{product.price|intcomma}} <del class="ml-3" style="color: grey;">₹ {{product.old_price|intcomma}}</span>
             <div class="mt-5">
                 <a class="buy_button" href='{{product.store_url}}' rel="nofollow">Buy Now</a>
             </div>
