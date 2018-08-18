@@ -1,0 +1,13 @@
+{% if posts %} {% load post_extras %} {% for post in posts %}
+<div class="media"> <a href="#"> <img class="d-flex mr-3" src="{{post.images.0}}" alt="{{post.title}}"></a>
+    <div class="media-body">
+        <div class="news-title">
+            <h2 class="title-small"><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+        </div>
+        <div class="news-auther"><span class="time">{% humanizeTimeDiff post.updated %}</span></div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="pd-5">No Suitable posts found.</div>
+{% endif %}

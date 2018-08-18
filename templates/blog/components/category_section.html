@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
-                <h3 class="heading-large">{{category_name}}</h3>
+                <h3 class="heading-large">{{category.name}}</h3>
                 <div class="">
                     {% for post in featured_posts_by_category %}
                     <div class="col-lg-6 card">
@@ -31,82 +31,13 @@
                 <!-- Tab panes -->
                 <div class="tab-content sidebar-tabing" id="nav-tabContent">
                     <div class="tab-pane active" id="home" role="tabpanel">
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/sport2.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/lifestyle.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Obamacare Appears to Be Making People Healthier</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/food1.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
+                        {% latest_posts category.id %}
                     </div>
                     <div class="tab-pane" id="profile" role="tabpanel">
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/movie.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/auto.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">‘S.N.L.’ to Lose Two Longtime Cast Members</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/business1.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Obamacare Appears to Be Making People Healthier</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
+                        {% top_posts category.id %}
                     </div>
                     <div class="tab-pane" id="messages" role="tabpanel">
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/food.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/business.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">‘S.N.L.’ to Lose Two Longtime Cast Members</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
-                        <div class="media"> <a href="#"> <img class="d-flex mr-3" src="http://grafreez.com/wp-content/temp_demos/river/img/sport1.jpg" alt="Generic placeholder image"></a>
-                            <div class="media-body">
-                                <div class="news-title">
-                                    <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
-                                </div>
-                                <div class="news-auther"><span class="time">1h ago</span></div>
-                            </div>
-                        </div>
+                        {% featured_posts category.id %}
                     </div>
                 </div>
                 <div class="video-sec">

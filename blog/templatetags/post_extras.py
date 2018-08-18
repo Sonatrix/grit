@@ -17,12 +17,30 @@ def show_featured_posts(count=5):
         is_featured=False).order_by("-publish")[:count]
     return {"featured_posts": featured_posts}
 
+@register.inclusion_tag("blog/tags/post_item.html")
+def top_posts(id=None):
+    top_posts = Post.published.exclude(is_top=False).filter(
+        category=id).order_by("-publish")[:3]
+    return {"posts": top_posts}
+
+@register.inclusion_tag("blog/tags/post_item.html")
+def featured_posts(id=None):
+    posts = Post.published.exclude(is_featured=False).filter(
+        category=id).order_by("-publish")[:3]
+    return {"posts": posts}
+
+@register.inclusion_tag("blog/tags/post_item.html")
+def latest_posts(id=None):
+    posts = Post.published.filter(
+        category=id).order_by("-publish")[:3]
+    return {"posts": posts}
+
 @register.inclusion_tag("blog/components/category_section.html")
 def show_posts_by_category(id=None):
     featured_posts = Post.published.filter(
         category=id).order_by("-publish")[:4]
     category = Category.published.get(id=id)
-    return {"featured_posts_by_category": featured_posts, "category_name": category.name}
+    return {"featured_posts_by_category": featured_posts, "category": category}
 
 
 @register.inclusion_tag("blog/components/post_banner.html")
