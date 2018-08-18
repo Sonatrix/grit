@@ -1,7 +1,10 @@
 <section class="banner-sec category-banner m-2">
     <div class="fluid-container ml-3">
-        <h3>{{category.name}}</h3>
-        <div class="card-group">
+        <div class="top-head">
+        <h3 style="display: inline-block;">{{category.name}}</h3>
+        <a class="btn pd-3 btn-card" style="float:right;" href="{{category.get_absolute_url}}" alt="{{category.name}}" rel="canonical" target="_blank">View All</a>
+      </div>
+        <div class="card-group mt-3">
             <div id="columns" class="columns_4 infinite-container">
                 {% for product in products %} {% include "locator/product/product_item.html" %} {% endfor %}
             </div>
