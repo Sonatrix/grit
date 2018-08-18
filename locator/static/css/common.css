@@ -472,3 +472,20 @@ a.nav-link {
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
 }
+
+
+/*Carousel css*/
+.carousel-indicators {
+    bottom: -30px;
+}
+
+.carousel-indicators li {
+    width: 8px;
+    border-radius: 15px;
+    height: 8px;
+    background: lightgrey;
+}
+
+.carousel-indicators .active {
+    background: #a9a1a1;
+}
