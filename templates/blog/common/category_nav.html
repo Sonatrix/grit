@@ -1,7 +1,0 @@
-<nav class="main-navigation">
-    <ul class="nav-list pb-3">
-        {% for category in categories %}
-        <li class="nav-list-item"><a class="p-2 text-muted nav-link" href='{% url "locator:category_products" category.slug %}'>{{category.name}}</a> </li> {% endfor %}
-        <li class="nav-list-item"><a class="p-2 text-muted nav-link" href="{% url 'blog:post_list' %}">Buying Guide</a> </li>
-    </ul>
-</nav>
