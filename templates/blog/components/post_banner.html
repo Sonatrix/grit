@@ -1,0 +1,73 @@
+<section class="banner-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+              {% for post in left_section %}
+                <div class="card"> <img class="img-fluid" src="{{post.images.0}}" alt="">
+                    <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{post.category.name}}</span> </div>
+                    <div class="card-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ post.get_absolute_url }}">{{post.title|truncatechars:40}}...</a></h2>
+                        </div>
+                        <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-3">
+                {% for post in right_section %}
+                <div class="card"> <img class="img-fluid" src="{{post.images.0}}" alt="">
+                    <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{post.category.name}}</span> </div>
+                    <div class="card-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ post.get_absolute_url }}">{{post.title|truncatechars:40}}...</a></h2>
+                        </div>
+                        <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-6 top-slider">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        {% for index in "x"|ljust:count %}
+                        {% if index is 0 %}
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        {% else %}
+                        <li data-target="#carousel-example-generic" data-slide-to="{{index}}"></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid" src="{{active_item.images.0}}" alt="{{active_item.title}}"></div>
+                                <div class="news-title">
+                                    <h2 class=" title-large"><a href="{{active_item.get_absolute_url}}">{{active_item.title}}</a></h2>
+                                </div>
+                                <div class="news-des">{{active_item.short_description |truncatechars:300}}...</div>
+                                <div class="time-text"><strong>2h ago</strong></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        {% for post in carousel_section %}
+                          <div class="carousel-item">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid" src="{{post.images.0}}" alt="{{post.title}}"></div>
+                                <div class="news-title">
+                                    <h2 class="title-large"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+                                </div>
+                                <div class="news-des">{{post.short_description|truncatechars:300}}...</div>
+                                <div class="time-text"><strong>2h ago</strong></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

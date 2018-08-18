@@ -1,5 +1,8 @@
 {% extends 'blog/common/base.html' %} {% load post_extras %} {% block title %} Your Shopping friend{% endblock %} {% block app_body %}
 
+{% banner_posts %}
+{% include "blog/components/category_section.html" %}
+
 {% for post in posts %}
 <h2>
 	<a href="{{ post.get_absolute_url }}">

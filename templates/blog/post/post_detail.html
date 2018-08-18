@@ -1,16 +1,15 @@
 {% extends 'blog/common/base.html' %}{% load post_extras %}{% block title %}{{post.title}}{% endblock %} {% block app_body %}
-<h1>{{ post.title }}</h1>
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-</p>
-<div>
-{% autoescape off %}
-    {{ post.body }}
-{% endautoescape %}</div>
+<div class="col-md-9">
+    <h1>{{ post.title }}</h1>
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+    <div>
+        {% autoescape off %} {{ post.body }} {% endautoescape %}
+    </div>
+</div>
+<div class="col-md-3 right-menu">
+    {% show_latest_posts 5 %}
+    <hr> {% show_featured_posts 5 %}
+</div>
 {% endblock %}
-
-{% block side_body %}
-  {% show_latest_posts 5 %}
-  <hr>
-  {% show_featured_posts 5 %}
- {% endblock %}
