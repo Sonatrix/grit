@@ -9,7 +9,6 @@
 }
 
 .right-menu {
-    border: 1px solid lightgrey;
     padding: 20px;
 }
 
@@ -67,15 +66,16 @@ section {
     font-size: 20px;
     margin: 10px 0 5px;
     line-height: 27px;
-    color: #141517;
+    color: #141517b8;
 }
 
 .title-small {
-    color: #141517;
+    color: #141517b8;
     font-size: 16px;
     font-weight: 400;
     line-height: 23px;
     margin: 6px 0 0;
+    font-weight: 600;
 }
 
 .title-x-small {
@@ -372,7 +372,8 @@ section {
 
 .section-01 .title-small {
     margin-bottom: 5px;
-    font-size: 17px
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .section-01 .news-block {

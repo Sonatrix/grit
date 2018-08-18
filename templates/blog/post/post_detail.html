@@ -1,5 +1,5 @@
 {% extends 'blog/common/base.html' %}{% load post_extras %}{% block title %}{{post.title}}{% endblock %} {% block app_body %}
-<div class="col-md-9">
+<div class="col-lg-8 col-md-12">
     <h1>{{ post.title }}</h1>
     <p class="date">
         Published {{ post.publish }} by {{ post.author }}
@@ -8,8 +8,34 @@
         {% autoescape off %} {{ post.body }} {% endautoescape %}
     </div>
 </div>
-<div class="col-md-3 right-menu">
-    {% show_latest_posts 5 %}
-    <hr> {% show_featured_posts 5 %}
-</div>
+<aside class="col-lg-4 side-bar col-md-12 right-menu">
+    <hr>
+    <div class="post-block">
+        <h3>Top Posts</h3>
+        <div class="tab-content sidebar-tabing">
+            <div class="tab-pane active" id="home" role="tabpanel">
+                {% top_posts post.category_id 5 %}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="post-block">
+        <h3>Featured Posts</h3>
+        <div class="tab-content sidebar-tabing">
+            <div class="tab-pane active" id="home" role="tabpanel">
+                {% featured_posts post.category_id 5 %}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="post-block">
+        <h3>Latest Posts</h3>
+        <div class="tab-content sidebar-tabing">
+            <div class="tab-pane active" id="home" role="tabpanel">
+                {% latest_posts post.category_id 5 %}
+            </div>
+        </div>
+    </div>
+    <hr>
+</aside>
 {% endblock %}
