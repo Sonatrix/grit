@@ -1,4 +1,4 @@
-{% extends 'locator/common/base.html' %} {% load category_tag %} {% load static from staticfiles %} {% block app_body %} {% include './components/products_carousel.html' %}
+{% extends 'locator/common/base.html' %} {% load category_tag %} {% load products %} {% load static from staticfiles %} {% block app_body %} {% include './components/products_carousel.html' %}
 <div class="fluid-container mt-5 ml-2 mr-2">
     <div class="row mb-2">
         {% show_brands %}
@@ -40,6 +40,11 @@
                 </a>{% endfor %}</div>
         </div>
     </div>
+    {% for category in categories %}
+    <div class="row">
+        {% show_products category.id 5 %}
+    </div>
+    {% endfor %}
 </div>
 <!-- /.container -->
 {% endblock %}

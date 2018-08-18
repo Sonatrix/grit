@@ -489,3 +489,8 @@ a.nav-link {
 .carousel-indicators .active {
     background: #a9a1a1;
 }
+
+.category-banner{
+    border: 1px solid lightgrey;
+    padding: 12px;
+}

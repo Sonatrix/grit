@@ -1,0 +1,12 @@
+<section class="banner-sec category-banner m-2">
+    <div class="fluid-container ml-3">
+        <h3>{{category.name}}</h3>
+        <div class="card-group">
+            <div id="columns" class="columns_4 infinite-container">
+                {% for product in products %} {% include "locator/product/product_item.html" %} {% endfor %}
+            </div>
+        </div>
+        <!-- /.card-group -->
+    </div>
+    <!-- /.container -->
+</section>

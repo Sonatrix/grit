@@ -9,8 +9,7 @@
             <span class="price" itemprop="price">₹ {{product.price|intcomma}} <del class="ml-3" style="color: grey;">₹ {{product.old_price|intcomma}}</span>
             <div class="mt-5">
                 <a class="buy_button" href='{{product.store_url}}' rel="nofollow">Buy Now</a>
-            </div>
-            <hr>
+            </div><hr>
             <h3>Description</h3>
             <div class="item_description mt-3">
                 {% autoescape off %} {{product.description}} {% endautoescape %}</div>

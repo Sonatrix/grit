@@ -65,7 +65,6 @@ def humanizeTimeDiff(timestamp=None):
     0 days 4 hours 3 minutes returns '4 hours', etc...
     """
     from datetime import datetime, timezone
-    print(timestamp)
     timeDiff = datetime.now(timezone.utc) - timestamp
     days = int(timeDiff.days)
     hours = int(timeDiff.seconds / 3600)

@@ -5,7 +5,8 @@ from locator.models import Product, Category
 
 def index(request):
     products = Product.objects.prefetch_related().all().order_by('?')[:5]
-    return render(request, 'locator/index.html', {"products": products})
+    categories = Category.published.filter(parent=None)
+    return render(request, 'locator/index.html', {"products": products, "categories": categories})
 
 
 def product_details(request, slug, pslug):
