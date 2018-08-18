@@ -1,25 +1,10 @@
 {% extends 'blog/common/base.html' %} {% load post_extras %} {% block title %} Your Shopping friend{% endblock %} {% block app_body %}
 
 {% banner_posts %}
-{% include "blog/components/category_section.html" %}
 
-{% for post in posts %}
-<h2>
-	<a href="{{ post.get_absolute_url }}">
-	{{ post.title }}
-	</a>
-</h2>
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-</p>
-<div>
-{% autoescape off %}
-    {{ post.short_description|truncatewords:30|linebreaks }}
-{% endautoescape %}</div>
- {% endfor %} {% include "./pagination.html" with page=page_obj %} {% endblock %}
-
- {% block side_body %}
-  {% show_latest_posts 5 %}
-  <hr>
-  {% show_featured_posts 5 %}
- {% endblock %}
+<!-- Show post list by category -->
+{% for category in parent_category %}
+{% show_posts_by_category category.id %}
+{% endfor %}
+<!-- End post list by category -->
+{% endblock %}

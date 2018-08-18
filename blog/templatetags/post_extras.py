@@ -1,5 +1,6 @@
 from django import template
 from blog.models import Post
+from locator.models import Category
 
 register = template.Library()
 
@@ -15,6 +16,13 @@ def show_featured_posts(count=5):
     featured_posts = Post.published.exclude(
         is_featured=False).order_by("-publish")[:count]
     return {"featured_posts": featured_posts}
+
+@register.inclusion_tag("blog/components/category_section.html")
+def show_posts_by_category(id=None):
+    featured_posts = Post.published.filter(
+        category=id).order_by("-publish")[:4]
+    category = Category.published.get(id=id)
+    return {"featured_posts_by_category": featured_posts, "category_name": category.name}
 
 
 @register.inclusion_tag("blog/components/post_banner.html")

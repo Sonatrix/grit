@@ -1,61 +1,25 @@
+{% load post_extras %} {% if featured_posts_by_category %}
 <section class="section-01">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
-                <h3 class="heading-large">Politics</h3>
+                <h3 class="heading-large">{{category_name}}</h3>
                 <div class="">
+                    {% for post in featured_posts_by_category %}
                     <div class="col-lg-6 card">
-                        <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/war.jpg" alt="">
+                        <div class="card"> <img class="img-fluid" src="{{post.images.0}}" alt="{{post.title}}">
                             <div class="card-body">
                                 <div class="news-title">
-                                    <a href="#">
-                                        <h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2>
+                                    <a href="{{post.get_absolute_url}}">
+                                        <h2 class="title-small">{{post.title}}</h2>
                                     </a>
                                 </div>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+                                <p class="card-text">{{post.short_description| truncatewords:30}}...</p>
+                                <p class="card-text"><small class="text-time"><em>{% humanizeTimeDiff post.updated %}</em></small></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 card">
-                        <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/politics.jpg" alt="">
-                            <div class="card-body">
-                                <div class="news-title">
-                                    <a href="#">
-                                        <h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2>
-                                    </a>
-                                </div>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 card">
-                        <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/movie.jpg" alt="">
-                            <div class="card-body">
-                                <div class="news-title">
-                                    <a href="#">
-                                        <h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2>
-                                    </a>
-                                </div>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 card">
-                        <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/travel1.jpg" alt="">
-                            <div class="card-body">
-                                <div class="news-title">
-                                    <a href="#">
-                                        <h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2>
-                                    </a>
-                                </div>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <aside class="col-lg-4 side-bar col-md-12">
@@ -157,3 +121,4 @@
         </div>
     </div>
 </section>
+{% endif %}

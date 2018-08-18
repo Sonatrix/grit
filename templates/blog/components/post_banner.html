@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-              {% for post in left_section %}
+                {% for post in left_section %}
                 <div class="card"> <img class="img-fluid" src="{{post.images.0}}" alt="">
                     <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{post.category.name}}</span> </div>
                     <div class="card-body">
@@ -32,13 +32,11 @@
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
-                        {% for index in "x"|ljust:count %}
-                        {% if index is 0 %}
+                        {% for index in "x"|ljust:count %} {% if index is 0 %}
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         {% else %}
                         <li data-target="#carousel-example-generic" data-slide-to="{{index}}"></li>
-                        {% endif %}
-                        {% endfor %}
+                        {% endif %} {% endfor %}
                     </ol>
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
@@ -54,7 +52,7 @@
                             </div>
                         </div>
                         {% for post in carousel_section %}
-                          <div class="carousel-item">
+                        <div class="carousel-item">
                             <div class="news-block">
                                 <div class="news-media"><img class="img-fluid" src="{{post.images.0}}" alt="{{post.title}}"></div>
                                 <div class="news-title">

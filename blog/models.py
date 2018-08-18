@@ -9,7 +9,7 @@ from datetime import datetime
 class PublishedManager(models.Manager):
 
     def get_queryset(self):
-        return super().get_queryset().filter(status='published')
+        return super().get_queryset().prefetch_related().filter(status='published')
 
 
 class Post(models.Model):
