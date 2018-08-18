@@ -13,8 +13,8 @@ def show_latest_posts(count=5):
 
 @register.inclusion_tag("blog/tags/featured_posts.html")
 def show_featured_posts(count=5):
-    featured_posts = Post.published.exclude(
-        is_featured=False).order_by("-publish")[:count]
+    featured_posts = Post.published.filter(
+        is_featured=True).order_by("-publish")[:count]
     return {"featured_posts": featured_posts}
 
 @register.inclusion_tag("blog/tags/post_item.html")

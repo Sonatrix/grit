@@ -23,31 +23,31 @@
                 </div>
             </div>
             <aside class="col-lg-4 side-bar col-md-12">
-                <ul class="nav nav-tabs" role="tablist" id="myTab">
-                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
-                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Top</a> </li>
-                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Featured</a> </li>
+                <ul class="nav nav-tabs" role="tablist" id="myTab-{{category.slug}}">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home{{category.slug}}" role="tab">Latest</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile-{{category.slug}}" role="tab">Top</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages-{{category.slug}}" role="tab">Featured</a> </li>
                 </ul>
                 <!-- Tab panes -->
-                <div class="tab-content sidebar-tabing" id="nav-tabContent">
-                    <div class="tab-pane active" id="home" role="tabpanel">
+                <div class="tab-content sidebar-tabing" id="nav-tabContent-{{category.slug}}">
+                    <div class="tab-pane active" id="home-{{category.slug}}" role="tabpanel">
                         {% latest_posts category.id %}
                     </div>
-                    <div class="tab-pane" id="profile" role="tabpanel">
+                    <div class="tab-pane" id="profile-{{category.slug}}" role="tabpanel">
                         {% top_posts category.id %}
                     </div>
-                    <div class="tab-pane" id="messages" role="tabpanel">
+                    <div class="tab-pane" id="messages-{{category.slug}}" role="tabpanel">
                         {% featured_posts category.id %}
                     </div>
                 </div>
-                <div class="video-sec">
+                <!-- <div class="video-sec">
                     <h4 class="heading-small">Featured Video</h4>
                     <div class="video-block">
                         <div class="embed-responsive embed-responsive-4by3">
                             <iframe class="embed-responsive-item" src="//www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </aside>
         </div>
     </div>

@@ -26,7 +26,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     tags = ArrayField(models.CharField(max_length=250), blank=True, null=True)
     external_url = models.URLField(default="", blank=True, null=True)
-    is_top = models.NullBooleanField(default=True, null=True, blank=True)
+    is_top = models.NullBooleanField(default=False, null=True, blank=True)
 
     objects = models.Manager()
     published = PublishedManager()
