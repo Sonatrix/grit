@@ -4,7 +4,7 @@ from locator.models import Product, Category
 
 
 def index(request):
-    products = Product.objects.prefetch_related().all()[:5]
+    products = Product.objects.prefetch_related().all().order_by('?')[:5]
     return render(request, 'locator/index.html', {"products": products})
 
 
@@ -26,7 +26,7 @@ def product_category(request, slug):
     else:
         category_ids = Category.objects.all().filter(
             id=category.id).values_list("children__id", flat=True).distinct()
-        products = Product.objects.prefetch_related().filter(category__in=category_ids)
+        products = Product.objects.prefetch_related().filter(category__in=category_ids).order_by('?')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 10)
