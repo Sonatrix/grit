@@ -1,6 +1,6 @@
 from django import template
 from blog.models import Post
-from locator.models import Category
+from locator.models import Category, Product
 
 register = template.Library()
 
@@ -103,3 +103,19 @@ def humanizeTimeDiff(timestamp=None):
         return str
     else:
         return None
+
+
+@register.inclusion_tag("locator/tags/products_by_post.html")
+def show_products_by_post(id=None, count=5):
+    category = Category.objects.select_related().get(id=id)
+    products = None
+
+    if category.parent_id is not None:
+        products = Product.objects.prefetch_related().filter(category_id=category.id)[:count]
+
+    else:
+        category_ids = Category.objects.all().filter(
+            id=category.id).values_list("children__id", flat=True).distinct()
+        products = Product.objects.prefetch_related().filter(category__in=category_ids).order_by('?')[:count]
+
+    return {"products": products}

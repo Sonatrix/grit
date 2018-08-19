@@ -1,0 +1,13 @@
+{% if products %} {% load post_extras %} {% load humanize %} {% for product in products %}
+<div class="media"> <a href="{{ product.get_absolute_url }}"> <img class="d-flex mr-3" src="{{product.images.0}}" alt="{{product.name}}"></a>
+    <div class="media-body">
+        <div class="news-title">
+            <h2 class="title-small"><a href="{{ product.get_absolute_url }}">{{product.name}}</a></h2>
+        </div>
+        <div class="news-auther"><span class="price">₹ {{product.price|intcomma}}</span></div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="pd-5">No Suitable products found.</div>
+{% endif %}

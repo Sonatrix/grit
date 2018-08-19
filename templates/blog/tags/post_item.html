@@ -1,5 +1,5 @@
 {% if posts %} {% load post_extras %} {% for post in posts %}
-<div class="media"> <a href="#"> <img class="d-flex mr-3" src="{{post.images.0}}" alt="{{post.title}}"></a>
+<div class="media"> <a href="{{ post.get_absolute_url }}"> <img class="d-flex mr-3" src="{{post.images.0}}" alt="{{post.title}}"></a>
     <div class="media-body">
         <div class="news-title">
             <h2 class="title-small"><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>

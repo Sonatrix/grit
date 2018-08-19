@@ -501,6 +501,7 @@ a.nav-link {
 .category-banner h3 {
     border-bottom: 1px solid lightgrey;
     margin-bottom: 2px;
+    padding: 15px;
 }
 .banner-sec h3{
     border: none;
