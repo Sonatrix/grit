@@ -16,13 +16,8 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <title>{% block app_title %}Shopptar{% endblock %}</title>
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
-    <script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
-    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'js/infinite.min.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet"> {% block css %} {% endblock %}
     <link rel="stylesheet" href="{% static 'css/common.css' %}"> {% block app_head %}{% endblock %}
 </head>
 
@@ -35,5 +30,11 @@
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b75c91b94940306"></script>
 </body>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/infinite.min.js' %}"></script>
+{% block javascript %} {% endblock %}
 
 </html>

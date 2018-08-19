@@ -1,0 +1,28 @@
+<!-- details card section starts from here -->
+{% load staticfiles %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}" crossorigin="anonymous"> {% endblock %}
+{% if posts %}
+<section class="details-card category-banner shadow-sm mb-5 mt-4">
+    <div class="container">
+        <h2 class="text-center pd-3" style="padding:15px;">Featured Fashion Styles To Follow</h2>
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{post.images.0}}" alt="{{post.title}}">
+                        <span><h4>{{post.category.name}}</h4></span>
+                    </div>
+                    <div class="card-desc">
+                        <h3>{{post.title|truncatechars:40}}...</h3>
+                        <p>{{post.short_description |truncatechars:180}}...</p>
+                        <a href="{{ post.get_absolute_url }}" alt="{{post.title}}" class="btn-card">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- details card section starts from here -->

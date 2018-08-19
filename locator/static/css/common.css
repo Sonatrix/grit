@@ -4,6 +4,10 @@ body {
     overflow-x: hidden;
 }
 
+/*.fluid-container {
+    background: #d3d3d336;
+}*/
+
 .blog-header {
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
@@ -491,10 +495,16 @@ a.nav-link {
 }
 
 .category-banner{
-    border: 1px solid lightgrey;
-    padding: 12px;
+    padding: 15px;
 }
 
+.category-banner h3 {
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 2px;
+}
+.banner-sec h3{
+    border: none;
+}
 .btn-card{
     background-color: #1ABC9C;
     color: #fff;
@@ -520,4 +530,5 @@ a.nav-link {
 a.btn-card {
     text-decoration: none;
     color: #fff;
+    font-weight: 700;
 }
