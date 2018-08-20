@@ -16,7 +16,8 @@ urlpatterns = [
     path('', home.index, name='home'),
     re_path(r'^sitemap\.xml/$', sitemap,
             {'sitemaps': sitemaps}, name='sitemap'),
-    path('search/', search.SearchView.as_view(), name='search'),
+    # path('search/', search.SearchView.as_view(), name='search'),
+    path('search/', search.search, name='search'),
     path('contact/', common.contact, name='contact'),
     path('brand/<slug:name>/', product.product_brand, name='brands'),
     path('<slug:slug>/', include([

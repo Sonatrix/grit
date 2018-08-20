@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
+    'django_filters',
+    'widget_tweaks',
     'blog',
     'locator'
 ]

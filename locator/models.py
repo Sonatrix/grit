@@ -76,7 +76,7 @@ class Product(models.Model):
     description = models.TextField()
     meta_description = models.TextField(default=" ")
     category = models.ForeignKey(
-        Category, related_name='category', on_delete=models.CASCADE)
+        Category, related_name='products', on_delete=models.CASCADE)
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     old_price = models.DecimalField(
         default=0.00, max_digits=10, decimal_places=2)
@@ -90,8 +90,6 @@ class Product(models.Model):
     )
     updated_at = models.DateTimeField(auto_now=True, null=True)
     created_at = models.DateTimeField(auto_now=True, null=True)
-    is_featured = models.NullBooleanField(default=False, null=True, blank=True)
-    is_trending = models.NullBooleanField(default=False, null=True, blank=True)
     discount = models.DecimalField(
         default=0.00, max_digits=4, decimal_places=2, null=True)
     sender = models.CharField(default="", blank=True, max_length=128)
@@ -115,3 +113,31 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('locator:product_detail', kwargs={'slug': self.category.slug, 'pslug': self.slug})
+
+
+class CollectionQuerySet(models.QuerySet):
+    def public(self):
+        return self.filter(is_published=True)
+
+class Collection(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=128, unique=True)
+    slug = models.SlugField(max_length=128)
+    products = models.ManyToManyField(
+        Product, blank=True, related_name='collections')
+    image = models.URLField(max_length=255, blank=True, null=True)
+    is_published = models.BooleanField(default=False)
+    
+    objects = CollectionQuerySet.as_manager()
+
+    class Meta:
+        ordering = ['pk']
+        db_table = 'collection'
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse(
+            'locator:collection',
+            kwargs={'slug': self.slug})

@@ -533,3 +533,29 @@ a.btn-card {
     color: #fff;
     font-weight: 700;
 }
+
+.product-filter-section {
+    background: #ffffff;
+}
+
+.product-filter-section label {
+    font-size: 16px;
+    padding: 20px 0px 10px 0px;
+    font-weight: 600;
+}
+
+.product-filter-section .checkbox-inline {
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0px;
+    display: block;
+}
+
+.price-filter-section label {
+    width: 100%;
+}
+
+.price-filter-section .form-control {
+    width: 65px;
+    display: inline-flex;
+}
