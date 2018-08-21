@@ -95,6 +95,8 @@ class Product(models.Model):
     sender = models.CharField(default="", blank=True, max_length=128)
     brand = models.ForeignKey(
         Brand, related_name='brand', on_delete=models.CASCADE)
+    collection = models.ForeignKey(
+        Brand, related_name='collections', on_delete=models.SET_NULL, null=True)
 
     # add tag field for adding keywords related to product
     tags = ArrayField(models.CharField(max_length=200), blank=True, null=True)
