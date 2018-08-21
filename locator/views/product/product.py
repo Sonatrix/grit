@@ -1,13 +1,13 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from locator.models import Brand, Category, Product
+from locator.models import Brand, Product
 
-def product_brand(request, name):
+def branded_product(request, name):
     brand = Brand.objects.select_related().get(slug=name)
     products = Product.objects.prefetch_related().filter(brand_id=brand.id)
-    categories = Category.objects.all()
+    product_filter = ProductFilter(request.GET, queryset=products)
     page = request.GET.get('page', 1)
-    paginator = Paginator(products, 10)
+    paginator = Paginator(product_filter.qs, 10)
     try:
         numbers = paginator.page(page)
     except PageNotAnInteger:
@@ -15,4 +15,4 @@ def product_brand(request, name):
     except EmptyPage:
         numbers = paginator.page(paginator.num_pages)
     
-    return render(request, 'locator/product/product_category.html', {"products": numbers, "categories": categories, "name": name})
+    return render(request, 'locator/product/product_category.html', {"filter":product_filter, "products": numbers})
