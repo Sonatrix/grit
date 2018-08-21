@@ -1,14 +1,18 @@
 {% extends 'locator/common/base.html' %} {% block app_body %}
 <div class="fluid-container mt-1 ml-2 mr-2">
-<div class="row jumbotron">
-    <div id="columns" class="columns_4 infinite-container">
-        {% for product in products %} {% include 'locator/product/product_item.html' %} {% endfor %}
+    <div class="row jumbotron">
+        {% include '../common/filter.html' %}
+        
+        <div class="col-md-10">
+            <div id="columns" class="columns_4 infinite-container">
+                {% for product in products %} {% include 'locator/product/product_item.html' %} {% endfor %}
+            </div>
+            {% if products.has_next %}
+            <a class="infinite-more-link pd-5" href="?page={{ products.next_page_number }}">More</a> {% endif %}
+            <div class="loader pd-5" style="display: none;">
+            </div>
+        </div>
     </div>
-    {% if products.has_next %}
-    <a class="infinite-more-link pd-5" href="?page={{ products.next_page_number }}">More</a> {% endif %}
-    <div class="loader pd-5" style="display: none;">
-    </div>
-</div>
 </div>
 <script>
 var infinite = new Waypoint.Infinite({

@@ -1,4 +1,5 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.aggregates import StringAgg
 from locator.models import Product, Category
 from django.views.generic.list import ListView
@@ -31,6 +32,14 @@ from django.shortcuts import render
 #       return context
 
 def search(request):
-    product_list = Product.objects.prefetch_related().all()
+    product_list = Product.objects.prefetch_related().all().order_by("?")
     product_filter = ProductFilter(request.GET, queryset=product_list)
-    return render(request, 'locator/product/search_results.html', {'filter': product_filter})
+    page = request.GET.get('page', 1)
+    paginator = Paginator(product_filter.qs, 10)
+    try:
+        numbers = paginator.page(page)
+    except PageNotAnInteger:
+        numbers = paginator.page(1)
+    except EmptyPage:
+        numbers = paginator.page(paginator.num_pages)
+    return render(request, 'locator/product/search_results.html', {'filter': product_filter, 'products':numbers})

@@ -536,6 +536,7 @@ a.btn-card {
 
 .product-filter-section {
     background: #ffffff;
+    height: max-content;
 }
 
 .product-filter-section label {

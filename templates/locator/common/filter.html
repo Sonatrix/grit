@@ -1,0 +1,27 @@
+{% load widget_tweaks %}
+<div class="col-md-2 product-filter-section" style="background:white">
+    <div class="col-md-12 mb-5">
+        <form method="get">
+            <div class="well">
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-12">
+                        {{ filter.form.brand.label_tag }}
+                        <div>
+                            {% for choice in filter.form.brand %}
+                            <label class="checkbox-inline">
+                                {{ choice.tag }} {{ choice.choice_label }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-12 price-filter-section">
+                        {{ filter.form.price.label_tag }} {% render_field filter.form.price class="form-control" %}
+                    </div>
+                </div>
+                <button type="submit" class="btn pd-3 btn-card">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

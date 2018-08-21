@@ -4,6 +4,7 @@ from django import forms
 from django_filters.widgets import SuffixedMultiWidget
 
 def brands(request):
+	print(request)
 	return Brand.objects.all()
 
 class RangeWidget(SuffixedMultiWidget):
