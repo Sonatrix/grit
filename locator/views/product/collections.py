@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import ObjectDoesNotExist
 from locator.models import Collection
 from locator.filters import ProductFilter
+
 
 def collections(request, name):
     collection = Collection.objects.prefetch_related().get(slug=name)
@@ -20,5 +22,5 @@ def collections(request, name):
         numbers = paginator.page(1)
     except EmptyPage:
         numbers = paginator.page(paginator.num_pages)
-    
-    return render(request, 'locator/product/product_category.html', {"filter":product_filter,"products": numbers, "name": name})
+
+    return render(request, 'locator/product/product_category.html', {"filter": product_filter, "products": numbers, "name": name})

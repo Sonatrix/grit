@@ -5,6 +5,7 @@ from django.utils.text import slugify
 from django.urls import reverse
 
 
+
 class CategoryManager(models.Manager):
 
     def get_queryset(self):
@@ -107,6 +108,28 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def get_collection(self):
+        return self.collection.name
+
+    def get_brand(self):
+        return self.brand.name
+
+    def get_category_name(self):
+        return self.category.name
+
+    def get_category_slug(self):
+        return self.category.slug
+
+    def get_image(self):
+        return self.images[0] if self.images is not None else None
+
+    def get_discount(self):
+        if self.discount is not None:
+            return self.discount
+        else:
+            price_diff = self.old_price - self.price
+            return float((price_diff//self.old_price)*100)
+
     def save(self, *args, **kwargs):
         self.meta_description = self.description[:30] + "..."
         self.slug = f'{slugify(self.name)}-{self.id.__hash__()%100000}'
@@ -129,7 +152,8 @@ class Collection(models.Model):
         Product, blank=True, related_name='collections')
     image = models.URLField(max_length=255, blank=True, null=True)
     is_published = models.BooleanField(default=False)
-    
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+
     objects = CollectionQuerySet.as_manager()
 
     class Meta:
@@ -142,4 +166,10 @@ class Collection(models.Model):
     def get_absolute_url(self):
         return reverse(
             'locator:collection',
-            kwargs={'slug': self.slug})
+            kwargs={'name': self.slug})
+
+    def get_products(self):
+        return self.products.values()
+
+    def get_image(self):
+        return self.image if self.image is not None else None 

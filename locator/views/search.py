@@ -1,5 +1,6 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.postgres.aggregates import StringAgg
 from locator.models import Product, Category
 from django.views.generic.list import ListView
