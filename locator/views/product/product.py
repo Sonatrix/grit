@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
 from locator.filters import ProductFilter
@@ -33,3 +33,7 @@ def detail_view(request, name):
         category_id=product.category_id).exclude(slug=name)[:5]
 
     return render(request, 'locator/product/product_details.html', {"product": product, 'latest_products': latest_products})
+
+
+def products_view(self):
+    return redirect('locator:home')

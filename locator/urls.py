@@ -22,6 +22,7 @@ urlpatterns = [
     path('brand/<slug:name>/', product.branded_product, name='brands'),
     path('collections/<slug:name>/', collections.collections, name='collection'),
     path('products/<slug:name>/', product.detail_view, name='product_view'),
+    path('products/', product.products_view, name='products_view'),
     path('<slug:slug>/', include([
         path('', home.product_category, name='category_products'),
         path('<slug:pslug>/', home.product_details, name='product_detail'),
