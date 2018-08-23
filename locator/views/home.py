@@ -20,10 +20,12 @@ def product_details(request, slug, pslug):
 
 
 def product_category(request, slug):
-    category = Category.objects.select_related().get(slug=slug)
-    products = None
-
-    product_list = Product.objects.prefetch_related().all().order_by("?")
+    try:
+        category = Category.objects.select_related().get(slug=slug)
+        products = None
+        product_list = Product.objects.prefetch_related().all().order_by("?")
+    except ObjectDoesNotExist:
+        product_list = None
     product_filter = ProductFilter(request.GET, queryset=product_list)
     productsData = product_filter.qs
 

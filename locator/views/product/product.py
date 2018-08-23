@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
 from locator.filters import ProductFilter
@@ -25,3 +25,11 @@ def branded_product(request, name):
         numbers = paginator.page(paginator.num_pages)
 
     return render(request, 'locator/product/product_category.html', {"filter": product_filter, "products": numbers})
+
+
+def detail_view(request, name):
+    product = get_object_or_404(Product, slug=name)
+    latest_products = Product.objects.prefetch_related().filter(
+        category_id=product.category_id).exclude(slug=name)[:5]
+
+    return render(request, 'locator/product/product_details.html', {"product": product, 'latest_products': latest_products})

@@ -3,5 +3,5 @@
     <img src="{{product.images.0}}" alt="{{product.name}}" title="{{product.name}}">
     <figcaption name="name">{{product.name}}</figcaption>
     <span class="price">₹ {{product.price|intcomma}}</span>
-    <a class="button" href='{% url "locator:product_detail" product.get_category_slug product.slug %}' alt="{{product.name}}">Buy Now</a>
+    <a class="button" href='{% url "locator:product_view" product.slug %}' alt="{{product.name}}">Buy Now</a>
 </figure>

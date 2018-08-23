@@ -114,6 +114,9 @@ class Product(models.Model):
     def get_brand(self):
         return self.brand.name
 
+    def get_path(self):
+        return "/{0}/{1}".format(self.get_category_slug(), self.slug)
+
     def get_category_name(self):
         return self.category.name
 
