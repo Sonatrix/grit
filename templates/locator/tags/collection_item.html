@@ -1,0 +1,15 @@
+<section class="banner-sec category-banner m-2 shadow-sm">
+    <div class="fluid-container ml-3">
+        <div class="top-head">
+            <h3 style="display: inline-block;">{{collection.name}}</h3>
+            <a class="btn pd-3 btn-card" style="float:right;" href="{{collection.get_absolute_url}}" alt="{{collection.name}}" rel="canonical" target="_blank">Discover Now</a>
+        </div>
+        <div class="card-group mt-3">
+            <div id="columns" class="columns_4 infinite-container">
+                {% for product in products %} {% include "locator/product/product_item_search.html" %} {% endfor %}
+            </div>
+        </div>
+        <!-- /.card-group -->
+    </div>
+    <!-- /.container -->
+</section>

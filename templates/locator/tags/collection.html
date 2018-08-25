@@ -1,0 +1,6 @@
+{% load products %}
+<div class="row mb-2">
+    {% for collection in collections %}
+        {% collection_item collection.id 5 %}
+    {% endfor %}
+</div>

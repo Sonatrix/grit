@@ -1,5 +1,5 @@
 from django import template
-from locator.models import Category, Product
+from locator.models import Category, Product, Collection
 
 register = template.Library()
 
@@ -17,3 +17,15 @@ def show_products(id=None, count=10):
         products = Product.objects.prefetch_related().filter(category__in=category_ids).order_by('?')[:count]
 
     return {"products": products, "category": category}
+
+@register.inclusion_tag("locator/tags/collection.html")
+def show_collections(count=3):
+	collections = Collection.published.all()[:count]
+
+	return {"collections": collections}
+
+@register.inclusion_tag("locator/tags/collection_item.html")
+def collection_item(id=None, count=10):
+    collection = Collection.published.get(id=id)
+    products = collection.get_products()[:count]
+    return {"products": products, "collection": collection}

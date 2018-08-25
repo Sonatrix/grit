@@ -156,8 +156,9 @@ class Collection(models.Model):
     image = models.URLField(max_length=255, blank=True, null=True)
     is_published = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True, null=True)
-
-    objects = CollectionQuerySet.as_manager()
+    
+    objects = models.Manager()
+    published = CollectionQuerySet.as_manager()
 
     class Meta:
         ordering = ['pk']
@@ -171,8 +172,8 @@ class Collection(models.Model):
             'locator:collection',
             kwargs={'name': self.slug})
 
-    def get_products(self):
-        return self.products.values()
+    def get_products(self, count=5):
+        return self.products.values()[:count]
 
     def get_image(self):
         return self.image if self.image is not None else None 

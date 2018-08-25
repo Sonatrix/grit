@@ -14,7 +14,7 @@ def collections(request, name):
         product_list = None
 
     product_filter = ProductFilter(request.GET, queryset=product_list)
-    productsData = product_filter.qs
+    productsData = product_filter.qs.order_by("?")
     page = request.GET.get('page', 1)
     paginator = Paginator(productsData, 10)
     try:
