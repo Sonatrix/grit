@@ -1,4 +1,4 @@
-{% extends 'blog/common/base.html' %}{% load post_extras %}{% block title %}{{post.title}}{% endblock %} {% block app_body %}
+{% extends 'blog/common/base.html' %}{% load post_extras %} {% load newsletter %}{% block title %}{{post.title}}{% endblock %} {% block app_body %}
 <div class="col-lg-8 col-md-12">
     <h1>{{ post.title }}</h1>
     <p class="date">
@@ -9,6 +9,7 @@
     </div>
 </div>
 <aside class="col-lg-4 side-bar col-md-12 right-menu">
+        {% subscribe_newsletter %}
     <hr>
     <div class="post-block">
         <h3>Top Posts</h3>
@@ -45,5 +46,6 @@
             </div>
         </div>
     </div>
+        {% subscribe_newsletter %}
 </aside>
 {% endblock %}

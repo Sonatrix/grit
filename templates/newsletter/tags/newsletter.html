@@ -1,0 +1,46 @@
+<!-- <form enctype="multipart/form-data" method="post" action="/newsletter/{{name}}/subscribe/">
+{% csrf_token %}
+<label for="id_email_field">E-mail:</label> <input type="email" name="email_field" required="" id="id_email_field">
+<button id="id_submit" name="submit" value="Subscribe" type="submit">Subscribe</button>
+</form> -->
+<hr>
+<div class="post-block">
+<form enctype="multipart/form-data" method="post" action="/newsletter/{{name}}/subscribe/">
+	{% csrf_token %}
+    <div class="text-center">
+        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+    </div>
+    <div class="text-center">
+        <h3>Subscribe for our newsletter</h3>
+    </div>
+    <div class="form-group">
+        <input type="email" name="email_field" placeholder="Email" required="" class="form-control" id="id_email_field">
+    </div>
+    <div class="form-group" style="text-align: center;">
+        <button id="id_submit" name="submit" value="Subscribe" type="submit" class="btn pd-3 btn-card">Subscribe</button>
+    </div>
+</form>
+</div>
+<!-- <div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 col-12 newsletter-main bg-light p-5">
+				<div class="row">
+					<div class="col-md-12 col-12 text-center heading">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<h2 class="mb-3 mt-3"><strong>NEWSLETTER</strong></h2>
+						<p class="text-secondary">Subscribe our newsletter to receive the latest news and exclusive offers every week.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 offset-md-2 col-12 text-center heading">
+						<form>
+						  <div class="form-group">
+						    <input type="email" class="form-control rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email address">
+						  </div>
+						  <button type="submit" class="btn btn-dark form-control rounded-0"><strong>SUBSCRIBE</strong></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->

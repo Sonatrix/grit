@@ -18,6 +18,7 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('newsletter/', include('newsletter.urls', namespace='newsletter')),
     path('fashion-articles/', include("blog.urls", namespace='blog')),
     path('', include("locator.urls", namespace='locator'))
 ]

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
+    'sorl.thumbnail',
+    'newsletter',
     'django_filters',
     'widget_tweaks',
     'blog',
@@ -132,3 +134,24 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 SITE_ID = 1
+
+# Newsletter related settings 
+NEWSLETTER_CONFIRM_EMAIL = False
+# Amount of seconds to wait between each email. Here 100ms is used.
+NEWSLETTER_EMAIL_DELAY = 0.1
+
+# Amount of seconds to wait between each batch. Here one minute is used.
+NEWSLETTER_BATCH_DELAY = 60
+
+# Number of emails in one batch
+NEWSLETTER_BATCH_SIZE = 100
+
+
+
+# Email related settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'youremail@gmail.com'
+EMAIL_HOST_PASSWORD = 'email_password'
+EMAIL_PORT = 587
