@@ -6,36 +6,43 @@
 
 {% block body %}
 {% if user.is_authenticated %}
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-12 newsletter-main bg-light p-5">
 <form method="POST" action="">
   {% csrf_token %}
   {{ formset.management_form }}
-  <table>
-    <tr>
-        <th>{% trans "Newsletter" %}</th>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6">{% trans "Newsletter" %}</div>
         {% if user %}
-        <th>{% trans "Subscribe" %}</th>
+        <div class="col-md-6">{% trans "Subscribe" %}</div>
         {% endif %}
-    </tr>
+    </div>
     {% for form in formset.forms %}
-      <tr>
-        <td>{{ form.id }}{{ form.newsletter }}
-<a href="{% url "newsletter:newsletter_detail" form.instance.newsletter.slug %}">{{ form.instance.newsletter.title }}</a></td>
-        <td>{{ form.subscribed }}</td>
-      </tr>
+      <div class="col-md-12">
+        <div class="col-md-6">{{ form.id }}{{ form.newsletter }}
+<a href="{% url "newsletter:newsletter_detail" form.instance.newsletter.slug %}">{{ form.instance.newsletter.title }}</a></div>
+        <div class="col-md-6">{{ form.subscribed }}</div>
+      </div>
     {% endfor %}
-  </table>
+  </div>
   <p><input id="id_submit" name="submit" value="{% trans "Update subscriptions" %}" type="submit" /></p>
 </form>
+</div>
 {% else %}
-<table>
-    <tr>
-        <th>{% trans "Newsletter" %}</th>
-    </tr>
+<div class="row pb-5 mb-5">
+    <h3>
+        {% trans "Newsletter" %}
+    </h3>
+    <div class="col-md-12">
     {% for newsletter in object_list %}
-    <tr>
-        <td><a href="{% url "newsletter:newsletter_detail" newsletter.slug %}">{{ newsletter.title }}</a></td>
-    </tr>
-    {% endfor %}
-</table>
+    
+        <div class="col-md-12"><a href="{% url "newsletter:newsletter_detail" newsletter.slug %}">{{ newsletter.title }}</a></div>
+    
+    {% endfor %}</div>
+</div>
+</div>
+</div>
 {% endif %}
 {% endblock body %}

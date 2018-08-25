@@ -16,6 +16,7 @@ requests = "*"
 lxml = "*"
 django-filter = "*"
 django-widget-tweaks = "*"
+django-bootstrap-form = "*"
 
 [requires]
 python_version = "3.5"

@@ -1,15 +1,17 @@
 {% extends "newsletter/newsletter/common.html" %}
 
 {% load i18n %}
-
+{% load bootstrap %}
 {% block title %}{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}{% endblock title %}
 
 {% block body %}
+<div class="col-md-12">
     <h1>{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}</h1>
 
     <form enctype="multipart/form-data" method="post" action=".">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|bootstrap }}
         <p><input id="id_submit" name="submit" value="{% trans "Activate" %}" type="submit" /></p>
     </form>
+</div>
 {% endblock body %}

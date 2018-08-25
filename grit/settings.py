@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'sorl.thumbnail',
     'newsletter',
+    'bootstrapform',
     'django_filters',
     'widget_tweaks',
     'blog',

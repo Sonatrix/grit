@@ -1,25 +1,32 @@
-{% extends "newsletter/newsletter/common.html" %}
+{% extends "newsletter/newsletter/common.html" %} {% load i18n %} {% block title %}{% trans "Newsletter subscribe" %}{% endblock title %} {% block body %}
+<div class="container">
+<h1>{% trans "Newsletter subscribe" %} {{ newsletter.title }}</h1> {% if error %}
+<p>{% trans "Due to a technical error we were not able to submit your confirmation email. This could be because your email address is invalid." %}</p>
+{% comment %} Replace the the following dummy with a valid email address and remove this comment.
+<p>{% trans "If the error persists, please don't hesitate to contact us at the following email address:" %} <a href="mailto:info@foobar.com">info@foobar.com</a></p>
+{% endcomment %} {% else %}
 
-{% load i18n %}
-
-{% block title %}{% trans "Newsletter subscribe" %}{% endblock title %}
-
-{% block body %}
-    <h1>{% trans "Newsletter subscribe" %} {{ newsletter.title }}</h1>
-
-    {% if error %}
-        <p>{% trans "Due to a technical error we were not able to submit your confirmation email. This could be because your email address is invalid." %}</p>
-
-        {% comment %} Replace the the following dummy with a valid email address and remove this comment.
-
-        <p>{% trans "If the error persists, please don't hesitate to contact us at the following email address:" %} <a href="mailto:info@foobar.com">info@foobar.com</a></p>
-
-        {% endcomment %}
-    {% else %}
-        <form enctype="multipart/form-data" method="post" action=".">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <p><input id="id_submit" name="submit" value="{% trans "Subscribe" %}" type="submit" /></p>
-        </form>
-    {% endif %}
-{% endblock body %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-12 newsletter-main bg-light p-5">
+            <div class="row">
+                <div class="col-md-12 col-12 text-center heading">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <h2 class="mb-3 mt-3"><strong>NEWSLETTER</strong></h2>
+                    <p class="text-secondary">Subscribe our newsletter to receive the latest news and exclusive offers every week.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2 col-12 text-center heading">
+                    <form enctype="multipart/form-data" method="post" action=".">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="email" name="email_field" placeholder="Enter email address" required="" class="form-control rounded-0" id="id_email_field">
+                        </div>
+                        <button id="id_submit" name="submit" value="{% trans " Subscribe " %}" type="submit" class="btn btn-dark form-control rounded-0">{% trans "Subscribe" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} {% endblock body %}

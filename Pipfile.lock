@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9b0f65a2ef5f378bd32103a640ff159731ed00e5f555334bff565691115ae61e"
+            "sha256": "abb823e76cfca2a54ed76bd786182c5a824f23ac7582d90bc8989d07b74a5078"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -46,6 +46,13 @@
             ],
             "index": "pypi",
             "version": "==2.1"
+        },
+        "django-bootstrap-form": {
+            "hashes": [
+                "sha256:de3f7893e515352834d446c441c0cb861637f92cebbe59d8229469c6cd3dc640"
+            ],
+            "index": "pypi",
+            "version": "==3.4"
         },
         "django-filter": {
             "hashes": [

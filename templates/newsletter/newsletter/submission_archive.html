@@ -5,6 +5,7 @@
 {% block title %}{% trans "Newsletter archive" %}{% endblock title %}
 
 {% block body %}
+<div class="col-md-12">
 <table>
     <tr>
         <th>{% trans "Newsletter archive" %} {{ newsletter.title }}</th>
@@ -18,4 +19,5 @@
         <td><a href="../">{% trans "Back to list" %}</a></td>
     </tr>
 </table>
+</div>
 {% endblock body %}
