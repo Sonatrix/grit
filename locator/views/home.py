@@ -23,7 +23,7 @@ def product_category(request, slug):
     try:
         category = Category.objects.select_related().get(slug=slug)
         products = None
-        product_list = Product.objects.prefetch_related().all().order_by("?")
+        product_list = Product.objects.prefetch_related().order_by("?")
     except ObjectDoesNotExist:
         product_list = None
     product_filter = ProductFilter(request.GET, queryset=product_list)
