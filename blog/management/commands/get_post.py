@@ -41,7 +41,7 @@ class Command(BaseCommand):
                 blog_post.body = self.get_content(link)
                 blog_post.created = datetime.fromtimestamp(
                    mktime(feed['entries'][i].published_parsed))
-                print(blog_post.short_description)
+                # print(blog_post.short_description)
                 blog_post.save()
 
     def get_content(self, url):

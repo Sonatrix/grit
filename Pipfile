@@ -17,6 +17,13 @@ lxml = "*"
 django-filter = "*"
 django-widget-tweaks = "*"
 django-bootstrap-form = "*"
+sorl-thumbnail = "*"
+python-card-me = "*"
+"ldif3" = "*"
+six = "*"
+surlex = "*"
+unicodecsv = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.5"

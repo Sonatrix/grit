@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <div id="columns" class="columns_4 infinite-container">
                 {% if products %} {% for product in products %} {% include 'locator/product/product_item_search.html' %} {% endfor %} } {% else %}
-                <div> No Product matches your criteria</div>
+                <h3> No Product matches your criteria</h3>
                 {% endif %}
             </div>
             {% if products.has_next %}
