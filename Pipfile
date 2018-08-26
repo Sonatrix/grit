@@ -24,6 +24,9 @@ six = "*"
 surlex = "*"
 unicodecsv = "*"
 pillow = "*"
+gunicorn = "*"
+dj-database-url = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.5"

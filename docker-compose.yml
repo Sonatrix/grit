@@ -3,14 +3,20 @@ version: '3'
 services:
   db:
     image: postgres
+    container_name: locatordatabase
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     command: python3 manage.py runserver 0.0.0.0:8000
+    container_name: locator
     volumes:
       - .:/code
+    env_file: common.env
     ports:
       - "8000:8000"
     depends_on:

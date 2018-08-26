@@ -7,7 +7,11 @@ register = template.Library()
 
 @register.inclusion_tag("blog/tags/latest_posts.html")
 def show_latest_posts(count=5):
-    latest_posts = Post.published.order_by("-publish")[:count]
+    try:
+        latest_posts = Post.published.order_by("-publish")[:count]
+    except:
+        latest_posts = None
+        
     return {"latest_posts": latest_posts}
 
 
